@@ -1,0 +1,32 @@
+th {
+    color: coral;
+    background-color: brown;
+    font-size: 110%;
+}
+
+h1,h2,h3 {
+    color: rgba(171, 120, 44, 0.614);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.tarea-urgente {
+    color: rgb(94, 80, 22);
+    font-weight: bolder;
+}
+
+#logo {
+    border: 2px solid navy;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+div > p {
+   color: Navy;
+   background-color: #23A3C1; 
+}
