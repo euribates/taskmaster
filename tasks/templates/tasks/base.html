@@ -3,24 +3,35 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
+    <title>
+    {% block titulo %}
+      Taskmaster
+    {% endblock titulo %}
+    </title>
     <link rel="stylesheet" href="{% static 'tasks/css/bulma.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'tasks/img/favicon.ico' %}"/>
+
   </head>
   <body>
+    <header>
+      {% include 'tasks/includes/navbar.html' %}
+    </header>
     <main>
     <section class="section">
     <div class="container">
-      <h1 class="title">
-        Hello World
-      </h1>
-      {% block content %}
-      <p class="subtitle">
-        My first website with <strong>Bulma</strong>!
+      <h1 class="title">{{ title }}</h1>
+      <h2 class="subtitle">{{ subtitle }}</h2>
       </p>
+      {% block content %}
       {% endblock content %}
     </div>
     </section>
     </main>
+
+{% block javascript %}
+  <script src="{% static 'tasks/js/tasks/js' %}%"></script>    
+{% endblock javascript %}
+
 
   </body>
 </html>

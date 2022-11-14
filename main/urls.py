@@ -9,10 +9,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', tasks.views.homepage),
     path('high/', tasks.views.tareas_urgentes),
-    path('urgentes/', tasks.views.tareas_urgentes),
+    path('urgentes/', tasks.views.tareas_urgentes, name='urgentes'),
     path('low/', tasks.views.tareas_no_urgentes),
-    path('no_urgentes/', tasks.views.tareas_no_urgentes),
-    path('projects/', tasks.views.lista_proyectos),
+    path('no_urgentes/', tasks.views.tareas_no_urgentes, name='no-urgentes'),
+    path('projects/', tasks.views.lista_proyectos, name="proyectos"),
 ]
 
 

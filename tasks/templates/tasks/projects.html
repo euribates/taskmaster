@@ -1,25 +1,32 @@
-<!doctype html>
-<html>
-  <head>
-    <title>TaskMaster! Tu gestor de tareas</title>
-    <style>
-      th {
-        color: coral;
-        background-color: brown;
-        font-size: 110%;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>TaskMaster</h1>
-    <h3>Gestión de tareas fácil</h3>
+{% extends 'tasks/base.html' %}
     
-   <dl>
-        {% for project in projects %}
-            <dt>{{ project.code }}</dt>
-            <dd>{{ project.name }}</dd>
-        {% endfor %}
+{% block content %}
+    
+    <h3 class="subtitle">Proyectos</h3>
+    
+   <table class="table">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nombre</th>
+          <th>fechas</th>
+        </tr>
+      </thead>
+      {% for project in projects %}
+      <tr>
+            <td>{{ project.code }}</td>
+            <td>{{ project.name }}</td>
+            <td>
+              Desde {{ project.start_date }} hasta {{ project.end_date }}
+            </td>
+      </tr>
+      {% endfor %}
    </dl> 
+
+{% endblock content %}
+
+
+
 
 
   </body>

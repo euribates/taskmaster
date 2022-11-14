@@ -1,4 +1,4 @@
-<table>
+<table class="table">
     <tr>
       <th>Nombre</th>
       <th>Prioridad</th>
@@ -12,18 +12,16 @@
       <td class="{% if tarea.priority == 'H' %}tarea-urgente{% endif %}">
         {{ tarea.name }}
       </td>
-      <td>{{ tarea.priority }}</td>
+      <td>{{ tarea.get_priority_display }}</td>
       <td>
         {% if tarea.is_due %}
-          <b>Fuera de plazo</b>
-        {% else %}
-          <i>N/A</i>
+          <b class="tag is-danger" >Fuera de plazo</b>
         {% endif %}
       </td>
       
       <td>
         {% if tarea.project %}
-          <b>{{ tarea.project.code }}</b>
+          <b>{{ tarea.project }}</b>
         {% else %}
           <i>-</i>
         {% endif %}
