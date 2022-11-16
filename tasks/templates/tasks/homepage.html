@@ -1,38 +1,12 @@
-{% load static %}<!doctype html>
-<html>
-  <head>
-    <title>TaskMaster! Tu gestor de tareas</title>
+{% extends 'tasks/base.html' %}
 
-    <link rel="stylesheet" type="text/css"
-          href="{% static 'tasks/css/styles.css' %}">
-  </head>
-  <body>
-
-    <img src="{% static 'tasks/logo.png' %}" 
-      id="logo"
-      width="110"
-      height="110"
-      alt="Logo">
-
-    <h1>TaskMaster</h1>
-
-    <h3>Gestión de tareas fácil
-    </h3>
-
-      <p>Hecho con <a href="http://python.org/">Python</a>.</p>
+{% block content %}
+<p>Hecho con <a href="http://python.org/">Python</a>.</p>
+    
+<p>Hoy es <strong>{{ fecha }}</strong></p>
     
 
-  <div>
-    <section>
-      <p>
-      Esto debería estar azul
-      </p>
-    </section>
-  </div>
-    
-    <p>Hoy es <strong>{{ fecha }}</strong></p>
-    
-  {% include 'tasks/includes/task_table.html' %}
 
-  </body>
-</html>
+
+{% include 'tasks/includes/task_table.html' %}
+{% endblock content %}

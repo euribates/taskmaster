@@ -7,8 +7,14 @@ def hoy():
 
 
 class Project(models.Model):
+
+    class Meta:
+        verbose_name = 'Proyecto'
+        verbose_name_plural = 'Proyectos'
+        ordering = ['code']
+
     name = models.CharField(max_length=250)
-    code = models.SlugField(max_length=4)
+    code = models.SlugField(max_length=4, unique=True)
     description = models.TextField()
     start_date = models.DateField()
     end_date  = models.DateField()
@@ -18,6 +24,12 @@ class Project(models.Model):
 
 
 class Task(models.Model):
+    
+    class Meta:
+        verbose_name = 'Tarea'
+        verbose_name_plural = 'Tareas'
+        ordering = ['-orden', 'name']
+    
     name = models.CharField(max_length=250)
     finished = models.BooleanField(default=False)
     orden = models.IntegerField(default=100)

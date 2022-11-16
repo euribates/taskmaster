@@ -1,4 +1,4 @@
-<table>
+<table class="table is-striped">
     <tr>
       <th>Nombre</th>
       <th>Prioridad</th>
@@ -15,7 +15,7 @@
       <td>{{ tarea.priority }}</td>
       <td>
         {% if tarea.is_due %}
-          <b>Fuera de plazo</b>
+          <b class="tag is-danger is-rounded">Fuera de plazo</b>
         {% else %}
           <i>N/A</i>
         {% endif %}
@@ -23,11 +23,12 @@
       
       <td>
         {% if tarea.project %}
-          <b>{{ tarea.project.code }}</b>
+          <b>{{ tarea.project.name }}</b>
         {% else %}
           <i>-</i>
         {% endif %}
       </td>
+
       <td style="background-color: {{ tarea.color }}">
         {{ tarea.color }}
       </td>

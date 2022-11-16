@@ -1,23 +1,11 @@
-{% load static %}<!doctype html>
-<html>
-  <head>
-    <title>TaskMaster! Tu gestor de tareas</title>
-    <link rel="stylesheet" type="text/css"
-          href="{% static 'tasks/css/styles.css' %}">
-  </head>
-  <body>
+{% extends 'tasks/base.html' %}
+    
+{% block titulo %}
+Tareas no urgentes
+{% endblock titulo %}
 
-    <img src="{% static 'tasks/logo.png' %}" 
-      id="logo"
-      width="110"
-      height="110"
-      alt="Logo">
+{% block content%}
+<h3>Tareas no urgentes</h3>
 
-    <h1>TaskMaster</h1>
-
-    <h3>Tareas no urgentes</h3>
-
-  {% include 'tasks/includes/task_table.html' %}
-
-  </body>
-</html>
+{% include 'tasks/includes/task_table.html' %}
+{% endblock content%}
