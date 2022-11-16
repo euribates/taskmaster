@@ -1,7 +1,8 @@
+{% load static %}
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
-        <img src="/static/tasks/logo.png" width="32" height="32">
+        <img src="{% static 'tasks/img/logo-64x64.png' %}" width="32" height="32">
       </a>
   
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -17,20 +18,20 @@
           Inicio
         </a>
   
-        <a href="{% url 'proyectos' %}" class="navbar-item">  
+        <a class="navbar-item" href="{% url 'proyectos' %}">
           Proyectos
         </a>
   
         <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
+          <a class="navbar-link" href="">
             Tareas
           </a>
   
           <div class="navbar-dropdown">
-            <a href="{% url 'tareas_urgentes' %}" class="navbar-item">
+            <a href="{% url 'tareas_no_urgentes' %}" class="navbar-item">
               Urgentes
             </a>
-            <a href="{% url 'tareas_no_urgentes' %}" class="navbar-item">
+            <a class="navbar-item" href="{% url 'no-urgentes' %}">
               No urgentes
             </a>
             <hr class="navbar-divider">
@@ -42,6 +43,9 @@
       </div>
   
       <div class="navbar-end">
+        <div class="navbar-item">
+          {% include 'tasks/includes/search_button.html' %}
+        </div>
         <div class="navbar-item">
           <div class="buttons">
             <a class="button is-primary">

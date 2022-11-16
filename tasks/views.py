@@ -67,11 +67,17 @@ def detalle_proyecto_code(request, code):
     })
 
 def buscar_tareas(request):
+    import logging
+    logging.warning('buscar_tareas starts')
+
     tareas = []
     num_tareas = 0
+    query = ''
     if request.method == 'POST':
+        logging.warning('Entra en el post')
         form = forms.SearchForm(request.POST)
         if form.is_valid():
+            logging.error('is valid')
             query = form.cleaned_data['query']
             tareas = models.Task.objects.filter(name__icontains=query)
             num_tareas = tareas.count()
@@ -79,7 +85,9 @@ def buscar_tareas(request):
         form = forms.SearchForm()
     return render(request, 'tasks/buscar_tareas.html', {
         'form': form,
+        'method': request.method,
         'tareas': tareas,
+        'query': query,
         'num_tareas': num_tareas,
     })
 
@@ -95,3 +103,13 @@ def crear_proyecto(request):
     return render(request, 'tasks/crear_proyecto.html', {
         'form': form,
     })
+
+from django.views.generic import DetailView
+
+
+class DetalleTarea(DetailView):
+    model = models.Task
+    template_name = 'tasks/detalle_tarea.html'
+
+
+detalle_tarea = DetalleTarea.as_view()

@@ -1,0 +1,37 @@
+{% extends 'tasks/base.html' %}
+
+{% block title %}
+Detalles proyecto {{ project.code }}
+{% endblock title %}
+
+{% block content %}
+
+<h2 class="title">Detalles proyecto</h2>
+<h3 class="subtitle">{{ project }}</h2>
+
+<table class="table">
+    <tr>
+        <th>{{ project.code }}</th>
+        <td>{{ project.name }}</td>
+    </tr>
+
+    <tr>
+        <td colspan="2">{{ project.description }}</td>
+    </tr>
+
+    <tr>
+        <th>Plazo</th>
+        <td>Desde {{ project.start_date }} hasta {{ project.end_date }}</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            {{ project.description }}
+        </td>
+    </tr>
+</table>
+
+<h2 class="subtitle">Tareas asociadas a este proyecto</h2>
+
+{% include 'tasks/includes/task_table.html' with tareas=project.task_set.all %}
+
+{% endblock content %}

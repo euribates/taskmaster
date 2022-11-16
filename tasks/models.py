@@ -42,11 +42,6 @@ class Task(models.Model):
         ],
         default='N',
     )
-    due_date = models.DateField(
-        blank=True,
-        null=True,
-        default=None,
-    )
     color = models.CharField(
         max_length=6,
         choices=[
@@ -57,6 +52,11 @@ class Task(models.Model):
         ],
         default='blue',
         )
+    due_date = models.DateField(
+        blank=True,
+        null=True,
+        default=None,
+    )
     project = models.ForeignKey(
         Project,
         blank=True,

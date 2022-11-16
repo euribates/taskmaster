@@ -5,26 +5,24 @@ Lista de proyectos ~ TaskMaster! Tu gestor de tareas
 {% endblock titulo %}
 
 {% block content %}
+<h1 class="title">Lista de proyectos</h1>
 
-   <table class="table">
-        {% for project in projects %}
-          <tr>
-            <td>
-              {% url 'detalle_proyecto' pk=project.pk %}
-              <br>
-              {% url 'proyecto_por_codigo' code=project.code %}
+<div class="columns is-multiline">
+{% for project in projects %}
+  <div class="column is-4 panel is_primary">
+    <div class="panel-heading">{{ project.name }} [{{ project.code}}]</div>
+    <div class="panel-block">
+      <p>{{ project.desciption }}</p>
+      <p>Desde {{ project.start_date }} hasta {{ project.end_date }}
+      <br>
+      <a class="button is-info is-small"
+         href="{% url 'proyecto_por_codigo' code=project.code %}">
+        Detalles
+      </a>
+     </p>
+    </div>
+  </div>   
+{% endfor %}
+</div><!-- de columns--> 
 
-            </td>
-            <td>{{ project.code }}</td>
-            <td>
-              <a class="button is-info is-small"
-                 href="{% url 'proyecto_por_codigo' code=project.code %}">
-              {{ project.name }}
-              </a>
-            </td>
-          </tr>  
-        {% endfor %}
-   </table> 
-
-   <p>hola</p>
 {% endblock content %}

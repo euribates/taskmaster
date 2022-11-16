@@ -1,21 +1,31 @@
 {% load static %}<!doctype html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
     <title>
         {% block titulo %}Gestor de tareas{% endblock titulo %}
     </title>
-    <link href="{% static 'tasks/css/bulma.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'tasks/css/bulma.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'tasks/img/favicon.ico' %}"/>
   </head>
   <body>
 
   {% include 'tasks/includes/navbar.html' %}
-  
-    <h1>TaskMaster</h1>
-    <h3>Gestión de tareas fácil</h3>
-    
-{% block content %}
-{% endblock content %}
+    <main>
+    <section class="section">
+    <div class="container">
+      <h1 class="title">{{ title }}</h1>
+      <h2 class="subtitle">{{ subtitle }}</h2>
+      </p>
+      {% block content %}
+      {% endblock content %}
+    </div>
+    </section>
+    </main>
 
-  <script src="{% static 'tasks/js/tasks.js' %}"></script>
+{% block javascript %}
+  <script src="{% static 'tasks/js/tasks/js' %}%"></script>    
+{% endblock javascript %}
   </body>
 </html>

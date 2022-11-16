@@ -1,0 +1,50 @@
+{% extends 'tasks/base.html' %}
+
+{% block title %}
+Detalles tarea {{ task }}
+{% endblock title %}
+
+{% block content %}
+
+<h2 class="subtitle">Detalles tarea {{ task }}
+
+<table class="table">
+    <tr>
+        <th>Nombre</th>
+        <td>{{ task.name }}</td>
+    </tr>
+
+    {% if task.project %}
+    <tr>
+        <th>Proyecto</th>
+        <td> 
+          <a href="{% url 'detalle_proyecto' pk=task.project.pk %}">
+            {{ task.project }}
+          </a>  
+        </td>
+    </tr>
+    {% endif %}
+
+    <tr>
+        <th>descripción</th>
+        <td>{{ task.description }}</td>
+    </tr>
+
+    <tr>
+        <th>Fecha límite</th>
+        <td>{{ task.due_date }}</td>
+    </tr>
+
+    <tr>
+        <th>Prioridad</th>
+        <td>{{ task.get_priority_display }}</td>
+    </tr>
+
+    <tr>
+        <th>Orden</th>
+        <td>{{ task.orden }}</td>
+    </tr>
+
+</table>
+
+{% endblock content %}
