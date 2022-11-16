@@ -18,6 +18,15 @@ class SearchForm(forms.Form):
     )
 
 class ProjectAdmin(forms.ModelForm):
+
+    def clean_end_date(self):
+        
+        start_date = self.cleaned_date['start_date']
+        end_date = self.cleaned_date['end_date']
+        if end_date <= start_date:
+            raise ValidationError('La fecha de inicio debe ser anterior a la de fin')
+
+
     class Meta:
         model = models.Project
         fields = [
