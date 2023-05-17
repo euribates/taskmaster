@@ -1,5 +1,5 @@
 {% load static %}
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav class="navbar is-black" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="/">
         <img src="{% static 'tasks/img/logo-64x64.png' %}" width="32" height="32">
@@ -12,7 +12,7 @@
       </a>
     </div>
   
-    <div id="navbarBasicExample" class="navbar-menu">
+    <div id="main-menu" class="navbar-menu">
       <div class="navbar-start">
         <a href="/" class="navbar-item">
           Inicio
@@ -43,19 +43,11 @@
       </div>
   
       <div class="navbar-end">
+        
         <div class="navbar-item">
           {% include 'tasks/includes/search_button.html' %}
         </div>
-        <div class="navbar-item">
-          <div class="buttons">
-            <a class="button is-primary">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light">
-              Log in
-            </a>
-          </div>
-        </div>
+
       </div>
     </div>
   </nav>

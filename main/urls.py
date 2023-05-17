@@ -4,12 +4,13 @@ from django.contrib import admin
 from django.urls import path, include
 
 import tasks.views
+import commons.views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', commons.views.homepage),
     path('__debug__/', include('debug_toolbar.urls')),
+    path('lab/', tasks.views.lab),
     path('buscar/', tasks.views.buscar_tareas, name="buscar"),
-    path('', tasks.views.homepage),
     path('high/', tasks.views.tareas_urgentes, name='tareas_urgentes'),
     path('urgentes/', tasks.views.tareas_urgentes, name='urgentes'),
     path('low/', tasks.views.tareas_no_urgentes, name='tareas_no_urgentes'),
@@ -23,4 +24,5 @@ urlpatterns = [
         tasks.views.detalle_proyecto_code,
         name='proyecto_por_codigo' 
         ),
+    path('admin/', admin.site.urls),
 ]

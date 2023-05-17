@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+
+
+<form action="." method="POST">
+{% csrf_token %}
+
+<section class="section">
+<h3 class="is-size-3">Ejemplo de botón</h3>
+
+<button class="button is-rounden">Click</button>
+</section>
+
+<section class="section">
+<h3 class="is-size-3">Ejemplo de input/text</h3>
+
+<div class="field">
+  <label class="label" for="txt-name">Name</label>
+  <div class="control">
+    <input class="input" type="text" id="txt-name" placeholder="Text input">
+  </div>
+</div>
+</section>
+
+<hr>
+
+<section class="section">
+<h3 class="is-size-3">Ejemplo de input/number</h3>
+
+<div class="field">
+  <label class="label" for="txt-number">Número</label>
+  <div class="control">
+    <input class="input" type="number" id="txt-number" placeholder="0">
+  </div>
+</div>
+</section>
+
+
+<section class="section">
+<h3 class="is-size-3">Ejemplo de Select</h3>
+
+<div class="field">
+    <label class="label" for="cb-ninja">Seleccion tu tortuga ninja / artista
+        famoso del renacimiento italiano</label>
+    <p class="control has-icons-left">
+      <span class="select">
+         <select name="ninja" id="cb-ninja">
+        <option value="leo">Leonardo</option>
+        <option value="mike">Michelangelo</option>
+        <option value="don">Donatello</option>
+        <option value="ralph">Raphael</option>
+        </select>
+      </span>
+    <span class="icon is-small is-left">
+      <i class="fas fa-pizza-slice"></i>
+    </span>
+    </p>
+</div>
+
+</section>
+
+
+<section class="section">
+<h3 class="is-size-3">Ejemplo de Checkbox</h3>
+
+<div class="field">
+    <label class="checkbox" for="opr-leo">
+        <input type="checkbox" name="ninja" value="leo" id="opr-leo">
+        Leonardo
+        </label>
+
+    <label class="checkbox" for="opr-mike">
+        <input type="checkbox" name="ninja" value="mike" id="opr-mike">
+        Michelangelo
+        </label>
+
+    <label class="checkbox" for="opr-don">
+        <input type="checkbox" name="ninja" value="don" id="opr-don">
+        Donatello
+        </label>
+
+    <label class="checkbox" for="opr-ralph">
+        <input type="checkbox" name="ninja" value="ralph" id="opr-ralph">
+        Raphael
+        </option>
+</div>
+</section>
+
+
+<section class="section">
+<h3 class="is-size-3">Ejemplo de Radio</h3>
+
+<div class="field">
+    <label class="radio" for="opt-leo">
+        <input type="radio" name="ninja" value="leo" id="opt-leo">
+        Leonardo
+        </label>
+
+    <label class="radio" for="opt-mike">
+        <input type="radio" name="ninja" value="mike" id="opt-mike">
+        Michelangelo
+        </label>
+
+    <label class="radio" for="opt-don">
+        <input type="radio" name="ninja" value="don" id="opt-don">
+        Donatello
+        </label>
+
+    <label class="radio" for="opt-ralph">
+        <input type="radio" name="ninja" value="ralph" id="opt-ralph">
+        Raphael
+        </option>
+</div>
+</div>
+</section>
+
+</form>
+{% endblock content %}

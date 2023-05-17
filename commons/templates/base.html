@@ -6,7 +6,9 @@
     <title>
         {% block titulo %}Gestor de tareas{% endblock titulo %}
     </title>
-    <link rel="stylesheet" href="{% static 'tasks/css/bulma.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css" integrity="sha512-gMjQeDaELJ0ryCI+FtItusU9MkAifCZcGq789FrzkiM49D8lbDhoaUaIX4ASU187wofMNlgBJ4ckbrXM9sE6Pg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/bulma.css' %}">
+
     <link rel="shortcut icon" type="image/png" href="{% static 'tasks/img/favicon.ico' %}"/>
   </head>
   <body>
@@ -15,17 +17,20 @@
     <main>
     <section class="section">
     <div class="container">
-      <h1 class="title">{{ title }}</h1>
-      <h2 class="subtitle">{{ subtitle }}</h2>
-      </p>
+        <div class="box"> 
+            <h1 class="title">{{ title }}</h1>
+            {% if subtitle %}<h2 class="subtitle">{{ subtitle }}</h2>{% endif %}
+        </div> 
+
       {% block content %}
       {% endblock content %}
+
     </div>
     </section>
     </main>
 
 {% block javascript %}
-  <script src="{% static 'tasks/js/tasks/js' %}%"></script>    
+  <script src="{% static 'tasks/js/tasks.js' %}"></script>    
 {% endblock javascript %}
   </body>
 </html>

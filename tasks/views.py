@@ -5,17 +5,11 @@ from django.utils import timezone
 from . import models
 from . import forms
 
-def homepage(request):
-    hoy = timezone.now().date()
-    tareas = (
-        models.Task.objects
-        .filter(finished=False)
-        .select_related('project')
-    )
-    return render(request, 'tasks/homepage.html', {
-        'fecha': hoy,
-        'tareas': tareas,
-    })
+
+def lab(request):
+    return render(request, 'tasks/lab.html', {
+        "title": "Labs",
+        })
 
 
 def lista_proyectos(request):

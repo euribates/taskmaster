@@ -1,14 +1,13 @@
-<form method="POST" action="{% url 'buscar' %}">
+<form method="POST" class="form" action="{% url 'buscar' %}">
 {% csrf_token %}
 <div class="field is-grouped">
-  <div class="field">
-    <div class="control">
-        <input class="input" size="12" type="search" name="query">
-    </div>
-
+  <div class="control">
+      <input class="input" size="12" type="search" name="query" value="{{ query }}">
   </div>
   <div class="control">
-     <button class="button is-link">🔍</button>
+      <button class="button is-info">
+          Buscar
+      </button>
   </div>
 </div>
 </form>
