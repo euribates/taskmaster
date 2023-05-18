@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+    
+{% block titulo %}
+Tareas con prioridad {{ prioridad }}
+{% endblock titulo %}
+
+{% block content%}
+<h3 class="subtitle">Tareas con prioridad {{ prioridad }}</h3>
+
+{% include 'tasks/includes/task_table.html' %}
+
+{% endblock content%}

@@ -1,7 +1,7 @@
 """main URL Configuration
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import re_path, path, include
 
 import tasks.views
 import commons.views
@@ -11,9 +11,10 @@ urlpatterns = [
     path('__debug__/', include('debug_toolbar.urls')),
     path('lab/', tasks.views.lab),
     path('buscar/', tasks.views.buscar_tareas, name="buscar"),
-    path('high/', tasks.views.tareas_urgentes, name='tareas_urgentes'),
-    path('urgentes/', tasks.views.tareas_urgentes, name='urgentes'),
+    re_path(r'^tareas/(high|normal|low)/$', tasks.views.tareas_por_prioridad),
     path('low/', tasks.views.tareas_no_urgentes, name='tareas_no_urgentes'),
+    path('nor/', tasks.views.tareas_no_urgentes, name='tareas_no_urgentes'),
+    path('urgentes/', tasks.views.tareas_urgentes, name='urgentes'),
     path('task/<int:pk>/', tasks.views.detalle_tarea, name="detalle_tarea"),
     path('no_urgentes/', tasks.views.tareas_no_urgentes, name='no-urgentes'),
     path('projects/', tasks.views.lista_proyectos, name='proyectos'),

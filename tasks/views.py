@@ -19,6 +19,21 @@ def lista_proyectos(request):
     })
 
 
+def tareas_por_prioridad(request, prioridad):
+    codigo_prioridad = prioridad[0].upper()
+    tareas = (
+        models.Task.objects
+        .filter(priority=codigo_prioridad)
+        .exclude(finished=True)
+        .order_by('orden', 'name')
+    )
+    return render(request, 'tasks/listado_tareas.html', {
+        'title': f"Tareas con prioridad {prioridad}",
+        'tareas': tareas,
+        'prioridad': prioridad,
+    })
+
+
 def tareas_urgentes(request):
     tareas = (
         models.Task.objects

@@ -16,6 +16,7 @@ SECRET_KEY = config('DJANGO_SECRET_KEY', default='django-insecure-3^&k4n6+)dg6jl
 DEBUG = True
 
 ALLOWED_HOSTS = [
+    'euribates.pythonanywhere.com',
 ]
 
 INTERNAL_IPS = [
