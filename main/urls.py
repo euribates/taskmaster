@@ -7,10 +7,12 @@ import tasks.views
 import commons.views
 
 urlpatterns = [
-    path('', commons.views.homepage),
+    path('', commons.views.homepage, name='homepage'),
     path('__debug__/', include('debug_toolbar.urls')),
     path('lab/', tasks.views.lab),
     path('buscar/', tasks.views.buscar_tareas, name="buscar"),
+    path('tareas/nueva/', tasks.views.create_task, name='create_task'),
+    path('tareas/editar/<int:pk>/', tasks.views.edit_task, name='edit_task'),
     re_path(r'^tareas/(high|normal|low)/$', tasks.views.tareas_por_prioridad),
     path('low/', tasks.views.tareas_no_urgentes, name='tareas_no_urgentes'),
     path('nor/', tasks.views.tareas_no_urgentes, name='tareas_no_urgentes'),

@@ -15,7 +15,30 @@ class SearchForm(forms.Form):
     )
 
 
+class CreateTaskForm(forms.ModelForm):
+    class Meta:
+        model = models.Task
+        fields = ['name', 'project', 'priority', 'color', 'due_date']
 
+
+def date_is_future(value):
+    from django.core.exceptions import ValidationError
+    from django.utils import timezone
+    today = timezone.now().date()
+    if value <= today:
+        raise ValidationError('La fecha debe estar situada en el futuro')
+
+
+class EditTaskForm(forms.ModelForm):
+    class Meta:
+        model = models.Task
+        fields = ['name', 'project', 'priority', 'color', 'due_date']
+
+    def clean(self):
+        cleaned_data = super().clean()
+        due_date = cleaned_data['due_date']
+        date_is_future(due_date)
+        return cleaned_data
 
 # class SearchForm(forms.Form):
     # query = forms.CharField(label="buscar")

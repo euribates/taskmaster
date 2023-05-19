@@ -122,3 +122,35 @@ class DetalleTarea(DetailView):
 
 
 detalle_tarea = DetalleTarea.as_view()
+
+
+def create_task(request):
+    if request.method == 'POST':
+        form = forms.CreateTaskForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('homepage')
+    else:
+        form = forms.CreateTaskForm()
+    return render(request, 'tasks/create_task.html', {
+        'title': 'Nueva tarea',
+        'form': form,
+        })
+
+
+def edit_task(request, pk):
+    task = models.Task.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = forms.EditTaskForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect('homepage')
+        else:
+            print("Algo falla")
+    else:
+        form = forms.EditTaskForm(instance=task)
+    return render(request, 'tasks/edit_task.html', {
+        'title': 'Nueva tarea',
+        'form': form,
+        })
+

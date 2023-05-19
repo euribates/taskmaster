@@ -1,5 +1,8 @@
 from django.db import models
 from django.utils import timezone
+from django.core.exceptions import ValidationError
+
+from django_countries.fields import CountryField
 
 
 def hoy():
@@ -16,11 +19,13 @@ class Project(models.Model):
     name = models.CharField(max_length=250)
     code = models.SlugField(max_length=4, unique=True)
     description = models.TextField()
-    start_date = models.DateField()
+    country = CountryField(default='ES')
+    start_date = models.DateField(default=hoy)
     end_date  = models.DateField()
 
     def __str__(self):
         return f'{self.code}: {self.description}'
+
 
 
 class Task(models.Model):

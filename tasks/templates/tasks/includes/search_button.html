@@ -1,8 +1,8 @@
 <form method="POST" class="form" action="{% url 'buscar' %}">
 {% csrf_token %}
-<div class="field is-grouped">
+<div class="field has-addons">
   <div class="control">
-      <input class="input" size="12" type="search" name="query" value="{{ query }}">
+      <input class="input" size="24" type="search" name="query" value="{{ query }}">
   </div>
   <div class="control">
       <button class="button is-info">

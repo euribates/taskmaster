@@ -13,9 +13,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = config('DJANGO_SECRET_KEY', default='django-insecure-3^&k4n6+)dg6jl(b*=t2b9cy!3swm9dc(5+nq(yd$px2(d-4ok')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG', cast=config.boolean, default=False)
 
 ALLOWED_HOSTS = [
+    '127.0.0.1',
     'euribates.pythonanywhere.com',
 ]
 
@@ -35,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'django_extensions',
+    'django_countries',
     'commons',
     'tasks',
 ]
@@ -75,6 +77,10 @@ TEMPLATES = [
         },
     },
 ]
+
+if not DEBUG:
+    TEMPLATES['APP_DIRS'] = True 
+
 
 WSGI_APPLICATION = 'main.wsgi.application'
 
