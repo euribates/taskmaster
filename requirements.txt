@@ -3,4 +3,3 @@ django
 django-debug-toolbar
 django-extensions
 werkzeug
-django-extensions
